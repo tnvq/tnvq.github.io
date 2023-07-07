@@ -1,0 +1,428 @@
+
+<!DOCTYPE html>
+<html lang="en">
+
+<head>
+  <meta charset="UTF-8">
+  <meta http-equiv="X-UA-Compatible" content="IE=edge">
+  <meta name="viewport" content="width=device-width, initial-scale=1">
+
+  <title>
+    TN-VQTTS
+  </title>
+
+  <!-- bootstrap -->
+  <script src="https://code.jquery.com/jquery-3.4.1.slim.min.js" integrity="sha384-J6qa4849blE2+poT4WnyKhv5vZF5SrPo0iEjwBvKU7imGFAV0wwj1yYfoRSJoZ+n" crossorigin="anonymous"></script>
+  <script src="https://cdn.jsdelivr.net/npm/popper.js@1.16.0/dist/umd/popper.min.js" integrity="sha384-Q6E9RHvbIyZFJoft+2mJbHaEWldlvI9IOYy5n3zV9zzTtmI3UksdQRVvoxMfooAo" crossorigin="anonymous"></script>
+  <link rel="stylesheet" href="https://cdn.jsdelivr.net/npm/bootstrap@4.4.1/dist/css/bootstrap.min.css" integrity="sha384-Vkoo8x4CGsO3+Hhxv8T/Q5PaXtkKtu6ug5TOeNV6gBiFeWPGFN9MuhOf23Q9Ifjh" crossorigin="anonymous">
+  <script src="https://cdn.jsdelivr.net/npm/bootstrap@4.4.1/dist/js/bootstrap.min.js" integrity="sha384-wfSDF2E50Y2D1uUdj0O3uMBJnjuUD4Ih7YwaYd1iqfktj0Uod8GCExl3Og8ifwB6" crossorigin="anonymous"></script>
+  <!-- icon -->
+  <script src="https://kit.fontawesome.com/87dc3e863a.js" crossorigin="anonymous"></script>
+  <!-- font -->
+  <link href="https://fonts.googleapis.com/css?family=Open+Sans" rel="stylesheet" type="text/css">
+  <style>
+    body {
+      background: rgb(255, 255, 255) no-repeat fixed top left;
+      font-family:'Open Sans', sans-serif;
+    }
+  </style>
+
+</head>
+
+<body>
+  <!-- cover -->
+  <section>
+    <div class="jumbotron text-center mt-0" style="padding-bottom: 0px;">
+      <div class="container-fluid">
+        <div class="row">
+          <div class="col">
+            <!-- paper title -->
+            <h2 style="font-size:30px;">
+                Speaker Adaptive Text-to-Speech with Timbre-Normalized Vector-Quantized Feature
+            </h2>
+
+            <hr>
+
+          </div>
+        </div>
+      </div>
+    </div>
+  </section>
+
+
+  <!-- demo -->
+  <section>
+    <div class="container">
+      <div class="row">
+	  
+	  	<div class="col-12 text-center">
+          <h3>Multi-speaker Text-to-speech</h3>
+          <hr style="margin-top:0px">
+        </div>
+        
+		<table class="table">
+		
+			
+			<tr><td scope="col" colspan="4">All the same, Freddy, I am glad you dropped in: I won't forget it. </td></tr>
+			<tr>
+				<td align="center">Ground-truth</td>
+				<td align="center">Tacotron 2</td>
+				<td align="center">Fastspeech 2</td>
+				<td align="center">GlowTTS</td>
+			</tr>
+			<tr>
+				<td><audio src="./resources/tts/gt/614_161065_000055_000001.wav" controls=""></audio></td>
+				<td><audio src="./resources/tts/tacotron2/614_161065_000055_000001.wav" controls=""></audio></td>
+				<td><audio src="./resources/tts/fastspeech2/614_161065_000055_000001.wav" controls=""></audio></td>
+				<td><audio src="./resources/tts/glowtts/614_161065_000055_000001.wav" controls=""></audio></td>
+			</tr>
+			<tr>
+				<td align="center">VITS</td>
+				<td align="center">GradTTS(Mel)</td>
+				<td align="center">GradTTS(VQ)</td>
+				<td align="center">VQTTS</td>
+			</tr>
+			<tr>
+				<td><audio src="./resources/tts/vits/614_161065_000055_000001.wav" controls=""></audio></td>
+				<td><audio src="./resources/tts/gradtts_mel/614_161065_000055_000001.wav" controls=""></audio></td>
+				<td><audio src="./resources/tts/gradtts_vq/614_161065_000055_000001.wav" controls=""></audio></td>
+				<td><audio src="./resources/tts/vqtts/614_161065_000055_000001.wav" controls=""></audio></td>
+			</tr>
+			
+			
+						
+			<tr><td scope="col" colspan="4">"More than a thousand went on them, Dmitri Fyodorovitch," retorted Trifon Borissovitch firmly. </td></tr>
+			<tr>
+				<td align="center">Ground-truth</td>
+				<td align="center">Tacotron 2</td>
+				<td align="center">Fastspeech 2</td>
+				<td align="center">GlowTTS</td>
+			</tr>
+			<tr>
+				<td><audio src="./resources/tts/gt/3922_723_000006_000000.wav" controls=""></audio></td>
+				<td><audio src="./resources/tts/tacotron2/3922_723_000006_000000.wav" controls=""></audio></td>
+				<td><audio src="./resources/tts/fastspeech2/3922_723_000006_000000.wav" controls=""></audio></td>
+				<td><audio src="./resources/tts/glowtts/3922_723_000006_000000.wav" controls=""></audio></td>
+			</tr>
+			<tr>
+				<td align="center">VITS</td>
+				<td align="center">GradTTS(Mel)</td>
+				<td align="center">GradTTS(VQ)</td>
+				<td align="center">VQTTS</td>
+			</tr>
+			<tr>
+				<td><audio src="./resources/tts/vits/3922_723_000006_000000.wav" controls=""></audio></td>
+				<td><audio src="./resources/tts/gradtts_mel/3922_723_000006_000000.wav" controls=""></audio></td>
+				<td><audio src="./resources/tts/gradtts_vq/3922_723_000006_000000.wav" controls=""></audio></td>
+				<td><audio src="./resources/tts/vqtts/3922_723_000006_000000.wav" controls=""></audio></td>
+			</tr>
+			
+			
+						
+						
+			<tr><td scope="col" colspan="4">"Guess we'd better begin to step lively, Star," he said, reaching forward and stroking the horse's neck. </td></tr>
+			<tr>
+				<td align="center">Ground-truth</td>
+				<td align="center">Tacotron 2</td>
+				<td align="center">Fastspeech 2</td>
+				<td align="center">GlowTTS</td>
+			</tr>
+			<tr>
+				<td><audio src="./resources/tts/gt/4535_279856_000053_000001.wav" controls=""></audio></td>
+				<td><audio src="./resources/tts/tacotron2/4535_279856_000053_000001.wav" controls=""></audio></td>
+				<td><audio src="./resources/tts/fastspeech2/4535_279856_000053_000001.wav" controls=""></audio></td>
+				<td><audio src="./resources/tts/glowtts/4535_279856_000053_000001.wav" controls=""></audio></td>
+			</tr>
+			<tr>
+				<td align="center">VITS</td>
+				<td align="center">GradTTS(Mel)</td>
+				<td align="center">GradTTS(VQ)</td>
+				<td align="center">VQTTS</td>
+			</tr>
+			<tr>
+				<td><audio src="./resources/tts/vits/4535_279856_000053_000001.wav" controls=""></audio></td>
+				<td><audio src="./resources/tts/gradtts_mel/4535_279856_000053_000001.wav" controls=""></audio></td>
+				<td><audio src="./resources/tts/gradtts_vq/4535_279856_000053_000001.wav" controls=""></audio></td>
+				<td><audio src="./resources/tts/vqtts/4535_279856_000053_000001.wav" controls=""></audio></td>
+			</tr>
+			
+			
+						
+						
+			<tr><td scope="col" colspan="4">He bent closer to the tiny quantity of powder in the bottom of the vessel.</td></tr>
+			<tr>
+				<td align="center">Ground-truth</td>
+				<td align="center">Tacotron 2</td>
+				<td align="center">Fastspeech 2</td>
+				<td align="center">GlowTTS</td>
+			</tr>
+			<tr>
+				<td><audio src="./resources/tts/gt/8699_291107_000218_000005.wav" controls=""></audio></td>
+				<td><audio src="./resources/tts/tacotron2/8699_291107_000218_000005.wav" controls=""></audio></td>
+				<td><audio src="./resources/tts/fastspeech2/8699_291107_000218_000005.wav" controls=""></audio></td>
+				<td><audio src="./resources/tts/glowtts/8699_291107_000218_000005.wav" controls=""></audio></td>
+			</tr>
+			<tr>
+				<td align="center">VITS</td>
+				<td align="center">GradTTS(Mel)</td>
+				<td align="center">GradTTS(VQ)</td>
+				<td align="center">VQTTS</td>
+			</tr>
+			<tr>
+				<td><audio src="./resources/tts/vits/8699_291107_000218_000005.wav" controls=""></audio></td>
+				<td><audio src="./resources/tts/gradtts_mel/8699_291107_000218_000005.wav" controls=""></audio></td>
+				<td><audio src="./resources/tts/gradtts_vq/8699_291107_000218_000005.wav" controls=""></audio></td>
+				<td><audio src="./resources/tts/vqtts/8699_291107_000218_000005.wav" controls=""></audio></td>
+			</tr>
+			
+			
+			
+			
+		</table>
+			
+			
+			
+			
+			
+        <div class="col-12 text-center">
+          <h3>Speaker adaptation (10s data)</h3>
+          <hr style="margin-top:0px">
+        </div>
+        
+		<table class="table">
+		
+			
+			<tr><td scope="col" colspan="3">The gate at the fair grounds was robbed that fall.</td></tr>
+			<tr>
+				<td align="center">Ground-truth</td>
+				<td align="center">AdaSpeech</td>
+				<td align="center">VQTTS</td>
+			</tr>
+			<tr>
+				<td><audio src="./resources/adapt_10s/gt/7975_280076_000014_000000.wav" controls=""></audio></td>
+				<td><audio src="./resources/adapt_10s/adaspeech/7975_280076_000014_000000.wav" controls=""></audio></td>
+				<td><audio src="./resources/adapt_10s/vqtts/7975_280076_000014_000000.wav" controls=""></audio></td>
+			</tr>
+			<tr>
+				<td align="center">TN-VQTTS(f.t. free)</td>
+				<td align="center">TN-VQTTS(weight f.t.)</td>
+				<td align="center"></td>
+			</tr>
+			<tr>
+				<td><audio src="./resources/adapt_10s/tnvqtts_argmax/7975_280076_000014_000000.wav" controls=""></audio></td>
+				<td><audio src="./resources/adapt_10s/tnvqtts_ft/7975_280076_000014_000000.wav" controls=""></audio></td>
+				<td></td>
+			</tr>
+			
+			
+			
+			
+			
+			
+           
+			<tr><td scope="col" colspan="3">The second passed in height The first, and sought the forehead, and half missed, Half falling on the hair.</td></tr>
+			<tr>
+				<td align="center">Ground-truth</td>
+				<td align="center">AdaSpeech</td>
+				<td align="center">VQTTS</td>
+			</tr>
+			<tr>
+				<td><audio src="./resources/adapt_10s/gt/908_31957_000017_000002.wav" controls=""></audio></td>
+				<td><audio src="./resources/adapt_10s/adaspeech/908_31957_000017_000002.wav" controls=""></audio></td>
+				<td><audio src="./resources/adapt_10s/vqtts/908_31957_000017_000002.wav" controls=""></audio></td>
+			</tr>
+			<tr>
+				<td align="center">TN-VQTTS(f.t. free)</td>
+				<td align="center">TN-VQTTS(weight f.t.)</td>
+				<td align="center"></td>
+			</tr>
+			<tr>
+				<td><audio src="./resources/adapt_10s/tnvqtts_argmax/908_31957_000017_000002.wav" controls=""></audio></td>
+				<td><audio src="./resources/adapt_10s/tnvqtts_ft/908_31957_000017_000002.wav" controls=""></audio></td>
+				<td></td>
+			</tr>
+			
+									
+			
+			<tr><td scope="col" colspan="3">The subject was a very noble one; he described the most famous action in which the Athenian people were ever engaged.</td></tr>
+			<tr>
+				<td align="center">Ground-truth</td>
+				<td align="center">AdaSpeech</td>
+				<td align="center">VQTTS</td>
+			</tr>
+			<tr>
+				<td><audio src="./resources/adapt_10s/gt/2961_961_000004_000008.wav" controls=""></audio></td>
+				<td><audio src="./resources/adapt_10s/adaspeech/2961_961_000004_000008.wav" controls=""></audio></td>
+				<td><audio src="./resources/adapt_10s/vqtts/2961_961_000004_000008.wav" controls=""></audio></td>
+			</tr>
+			<tr>
+				<td align="center">TN-VQTTS(f.t. free)</td>
+				<td align="center">TN-VQTTS(weight f.t.)</td>
+				<td align="center"></td>
+			</tr>
+			<tr>
+				<td><audio src="./resources/adapt_10s/tnvqtts_argmax/2961_961_000004_000008.wav" controls=""></audio></td>
+				<td><audio src="./resources/adapt_10s/tnvqtts_ft/2961_961_000004_000008.wav" controls=""></audio></td>
+				<td></td>
+			</tr>
+			
+			
+			
+			
+			
+			
+			<tr><td scope="col" colspan="3">She began to realize that in this pleasant little chat the fact of the boy's color had quite escaped her; and what especially puzzled her was that this had not happened before.</td></tr>
+			<tr>
+				<td align="center">Ground-truth</td>
+				<td align="center">AdaSpeech</td>
+				<td align="center">VQTTS</td>
+			</tr>
+			<tr>
+				<td><audio src="./resources/adapt_10s/gt/1995_1826_000055_000000.wav" controls=""></audio></td>
+				<td><audio src="./resources/adapt_10s/adaspeech/1995_1826_000055_000000.wav" controls=""></audio></td>
+				<td><audio src="./resources/adapt_10s/vqtts/1995_1826_000055_000000.wav" controls=""></audio></td>
+			</tr>
+			<tr>
+				<td align="center">TN-VQTTS(f.t. free)</td>
+				<td align="center">TN-VQTTS(weight f.t.)</td>
+				<td align="center"></td>
+			</tr>
+			<tr>
+				<td><audio src="./resources/adapt_10s/tnvqtts_argmax/1995_1826_000055_000000.wav" controls=""></audio></td>
+				<td><audio src="./resources/adapt_10s/tnvqtts_ft/1995_1826_000055_000000.wav" controls=""></audio></td>
+				<td></td>
+			</tr>
+			
+
+			
+			
+		</table>
+		
+		
+		
+					
+			
+        <div class="col-12 text-center">
+          <h3>Speaker adaptation (30s data)</h3>
+          <hr style="margin-top:0px">
+        </div>
+        
+		<table class="table">
+		
+			
+			<tr><td scope="col" colspan="3">The gate at the fair grounds was robbed that fall.</td></tr>
+			<tr>
+				<td align="center">Ground-truth</td>
+				<td align="center">AdaSpeech</td>
+				<td align="center">VQTTS</td>
+			</tr>
+			<tr>
+				<td><audio src="./resources/adapt_30s/gt/7975_280076_000014_000000.wav" controls=""></audio></td>
+				<td><audio src="./resources/adapt_30s/adaspeech/7975_280076_000014_000000.wav" controls=""></audio></td>
+				<td><audio src="./resources/adapt_30s/vqtts/7975_280076_000014_000000.wav" controls=""></audio></td>
+			</tr>
+			<tr>
+				<td align="center">TN-VQTTS(f.t. free)</td>
+				<td align="center">TN-VQTTS(weight f.t.)</td>
+				<td align="center"></td>
+			</tr>
+			<tr>
+				<td><audio src="./resources/adapt_30s/tnvqtts_argmax/7975_280076_000014_000000.wav" controls=""></audio></td>
+				<td><audio src="./resources/adapt_30s/tnvqtts_ft/7975_280076_000014_000000.wav" controls=""></audio></td>
+				<td></td>
+			</tr>
+			
+			
+			
+			
+			
+			
+           
+			<tr><td scope="col" colspan="3">The second passed in height The first, and sought the forehead, and half missed, Half falling on the hair.</td></tr>
+			<tr>
+				<td align="center">Ground-truth</td>
+				<td align="center">AdaSpeech</td>
+				<td align="center">VQTTS</td>
+			</tr>
+			<tr>
+				<td><audio src="./resources/adapt_30s/gt/908_31957_000017_000002.wav" controls=""></audio></td>
+				<td><audio src="./resources/adapt_30s/adaspeech/908_31957_000017_000002.wav" controls=""></audio></td>
+				<td><audio src="./resources/adapt_30s/vqtts/908_31957_000017_000002.wav" controls=""></audio></td>
+			</tr>
+			<tr>
+				<td align="center">TN-VQTTS(f.t. free)</td>
+				<td align="center">TN-VQTTS(weight f.t.)</td>
+				<td align="center"></td>
+			</tr>
+			<tr>
+				<td><audio src="./resources/adapt_30s/tnvqtts_argmax/908_31957_000017_000002.wav" controls=""></audio></td>
+				<td><audio src="./resources/adapt_30s/tnvqtts_ft/908_31957_000017_000002.wav" controls=""></audio></td>
+				<td></td>
+			</tr>
+			
+									
+			
+			<tr><td scope="col" colspan="3">The subject was a very noble one; he described the most famous action in which the Athenian people were ever engaged.</td></tr>
+			<tr>
+				<td align="center">Ground-truth</td>
+				<td align="center">AdaSpeech</td>
+				<td align="center">VQTTS</td>
+			</tr>
+			<tr>
+				<td><audio src="./resources/adapt_30s/gt/2961_961_000004_000008.wav" controls=""></audio></td>
+				<td><audio src="./resources/adapt_30s/adaspeech/2961_961_000004_000008.wav" controls=""></audio></td>
+				<td><audio src="./resources/adapt_30s/vqtts/2961_961_000004_000008.wav" controls=""></audio></td>
+			</tr>
+			<tr>
+				<td align="center">TN-VQTTS(f.t. free)</td>
+				<td align="center">TN-VQTTS(weight f.t.)</td>
+				<td align="center"></td>
+			</tr>
+			<tr>
+				<td><audio src="./resources/adapt_30s/tnvqtts_argmax/2961_961_000004_000008.wav" controls=""></audio></td>
+				<td><audio src="./resources/adapt_30s/tnvqtts_ft/2961_961_000004_000008.wav" controls=""></audio></td>
+				<td></td>
+			</tr>
+			
+			
+			
+			
+			
+			
+			<tr><td scope="col" colspan="3">She began to realize that in this pleasant little chat the fact of the boy's color had quite escaped her; and what especially puzzled her was that this had not happened before.</td></tr>
+			<tr>
+				<td align="center">Ground-truth</td>
+				<td align="center">AdaSpeech</td>
+				<td align="center">VQTTS</td>
+			</tr>
+			<tr>
+				<td><audio src="./resources/adapt_30s/gt/1995_1826_000055_000000.wav" controls=""></audio></td>
+				<td><audio src="./resources/adapt_30s/adaspeech/1995_1826_000055_000000.wav" controls=""></audio></td>
+				<td><audio src="./resources/adapt_30s/vqtts/1995_1826_000055_000000.wav" controls=""></audio></td>
+			</tr>
+			<tr>
+				<td align="center">TN-VQTTS(f.t. free)</td>
+				<td align="center">TN-VQTTS(weight f.t.)</td>
+				<td align="center"></td>
+			</tr>
+			<tr>
+				<td><audio src="./resources/adapt_30s/tnvqtts_argmax/1995_1826_000055_000000.wav" controls=""></audio></td>
+				<td><audio src="./resources/adapt_30s/tnvqtts_ft/1995_1826_000055_000000.wav" controls=""></audio></td>
+				<td></td>
+			</tr>
+			
+
+			
+			
+		</table>
+		
+      </div>
+    </div>
+  </section>
+
+  
+
+
+
+</body>
+</html>
